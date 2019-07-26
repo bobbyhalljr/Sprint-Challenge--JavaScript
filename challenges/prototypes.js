@@ -5,6 +5,39 @@
 /* == Step 1: Base Constructor ==
   Create a constructor function named CuboidMaker that accepts properties for length, width, and height
 */
+function CuboidMaker(attrs){
+  this.length = attrs.length,
+  this.width = attrs.width,
+  this.height = attrs.height
+}
+
+CuboidMaker.prototype.volume = function(length, width, height) {
+  this.volume = this.length * this.width * this.height;
+  return this.volume;
+}
+
+CuboidMaker.prototype.surfaceArea = function(length, width, height) {
+   this.surfaceArea = 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
+   return this.surfaceArea;
+}
+
+const Cuboid = new CuboidMaker({
+  length: 5,
+  width: 4,
+  height: 5
+});
+
+console.log(Cuboid.volume()); // 100
+console.log(Cuboid.surfaceArea()); // 130
+
+// Cuboid.prototype = Object.create(CuboidMaker.prototype);
+
+// function Cuboid(cube){
+//   CuboidMaker.call(this, cube);
+//   this.length = cube.length,
+//   this.width = cube.width,
+//   this.height = cube.height;
+// };
 
 
 /* == Step 2: Volume Method ==
